@@ -1,2 +1,2 @@
 # hello-python
-Learning Python 
+Learning Python Script 
