@@ -22,7 +22,11 @@
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
   # +++your code here+++
-  return
+  count = 0
+  for word in words:
+    if len(word) >= 2 and word[0] == word[-1]:
+      count +=1
+  return count
 
 
 # B. front_x
@@ -34,7 +38,14 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
   # +++your code here+++
-  return
+  x_list = []
+  other_list = []
+  for word in words:
+    if word[0] == "x":
+	    x_list.append(word)
+    else:
+	    other_list.append(word)
+  return sorted(x_list) + sorted(other_list)
 
 
 
@@ -44,9 +55,14 @@ def front_x(words):
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
+def last(a):
+
+  return a[-1]
+	
 def sort_last(tuples):
   # +++your code here+++
-  return
+  
+  return sorted(tuples,key=last)
 
 
 # Simple provided test() function used in main() to print
@@ -56,18 +72,18 @@ def test(got, expected):
     prefix = ' OK '
   else:
     prefix = '  X '
-  print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
+  print ('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
 
 
 # Calls the above functions with interesting inputs.
 def main():
-  print 'match_ends'
+  print ('match_ends')
   test(match_ends(['aba', 'xyz', 'aa', 'x', 'bbb']), 3)
   test(match_ends(['', 'x', 'xy', 'xyx', 'xx']), 2)
   test(match_ends(['aaa', 'be', 'abc', 'hello']), 1)
 
   print
-  print 'front_x'
+  print ('front_x')
   test(front_x(['bbb', 'ccc', 'axx', 'xzz', 'xaa']),
        ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
   test(front_x(['ccc', 'bbb', 'aaa', 'xcc', 'xaa']),
@@ -77,7 +93,7 @@ def main():
 
        
   print
-  print 'sort_last'
+  print ('sort_last')
   test(sort_last([(1, 3), (3, 2), (2, 1)]),
        [(2, 1), (3, 2), (1, 3)])
   test(sort_last([(2, 3), (1, 2), (3, 1)]),
